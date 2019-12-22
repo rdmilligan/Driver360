@@ -3,21 +3,35 @@ import Zone from '../constants/zoneconstants';
 import Action from '../constants/actionconstants';
 import {isZone} from '../helpers/zonehelpers';
 import {isAction} from '../helpers/actionhelpers';
-import {connect, setAction, incrementKarma} from '../store/store';
-import {View, VrButton, AmbientLight, PointLight, asset} from 'react-360';
+import {connect, setZone, setAction, clearAction, incrementKarma, clearKarma} from '../store/store';
+import {View, VrButton, AmbientLight, PointLight, Animated, asset} from 'react-360';
 import Entity from 'Entity';
+const AnimatedEntity = Animated.createAnimatedComponent(Entity);
 
 class Ryzon extends React.Component {
+    animationPosZ = new Animated.Value(0);
 
-    state = {
-        scaleTrafficSign: 0
+    handleTrafficSign = (action) => {
+        if (isAction(this.props.action, action)) 
+            return;
+
+        incrementKarma();
+        setAction(action);
     };
 
-    handleTrafficSign = () => {
-        if (isAction(this.props.action, '')){
-            incrementKarma();
-            setAction(Action.SignGivingOrderEntry20Zone);
-        }
+    animationOn = () => {
+        Animated.timing(this.animationPosZ, {toValue: 10, duration: 10000}).start((animation) => {
+            if (animation.finished){
+                this.animationPosZ = new Animated.Value(0);
+                clearKarma();
+                clearAction();
+                setZone(Zone.Traja);
+            }
+        });
+    };
+
+    animationOff = () => {
+        this.animationPosZ.stopAnimation();
     };
 
     render() {
@@ -46,10 +60,11 @@ class Ryzon extends React.Component {
                     }}
                 />
                 <VrButton
-                    onClick={this.handleTrafficSign}
-                    onEnter={() => this.setState({scaleTrafficSign: 0.1})}
-                    onExit={() => this.setState({scaleTrafficSign: 0})}>
-                    <Entity
+                    onClick={() => this.handleTrafficSign(Action.SignGivingOrderMaximumSpeed)}
+                    onEnter={this.animationOff}
+                    onExit={this.animationOn}>
+
+                    <AnimatedEntity
                         source={{
                             obj: asset('SignGivingOrderMaximumSpeed.obj'),
                             mtl: asset('SignGivingOrderMaximumSpeed.mtl')
@@ -57,8 +72,29 @@ class Ryzon extends React.Component {
                         lit={true}
                         style={{
                             transform: [
-                                {translate: [-3, -1, -4]},
-                                {scale: 1.0 + this.state.scaleTrafficSign}
+                                {translateX: -3}, 
+                                {translateY: -1},
+                                {translateZ: this.animationPosZ}
+                            ]
+                        }}
+                    />
+                </VrButton>
+                <VrButton
+                    onClick={() => this.handleTrafficSign(Action.SignGivingOrderNationalSpeedLimit)}
+                    onEnter={this.animationOff}
+                    onExit={this.animationOn}>
+
+                    <AnimatedEntity
+                        source={{
+                            obj: asset('SignGivingOrderNationalSpeedLimit.obj'),
+                            mtl: asset('SignGivingOrderNationalSpeedLimit.mtl')
+                        }}
+                        lit={true}
+                        style={{
+                            transform: [
+                                {translateX: 3}, 
+                                {translateY: -1},
+                                {translateZ: this.animationPosZ}
                             ]
                         }}
                     />

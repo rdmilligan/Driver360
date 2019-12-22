@@ -1,6 +1,10 @@
 # Driver 360
 
+[Try Driver 360 online](https://rdmilligan.github.io/driver-360/)
+
 Driver 360 is a virtual driving experience on a web page, built with React 360.
+
+It will help you learn The Highway Code.
 
 ## How to get started
 

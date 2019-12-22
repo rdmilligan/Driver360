@@ -1,5 +1,6 @@
 const Action = {
-    SignGivingOrderEntry20Zone: 'SignGivingOrderEntry20Zone'
+    SignGivingOrderMaximumSpeed: 'SignGivingOrderMaximumSpeed',
+    SignGivingOrderNationalSpeedLimit: 'SignGivingOrderNationalSpeedLimit'
 };
 
 export default Action;

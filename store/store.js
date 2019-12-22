@@ -25,13 +25,18 @@ export function setAction(action) {
   updateComponents();
 };
 
+export function clearAction() {
+  State.action = '';
+  updateComponents();
+};
+
 export function incrementKarma() {
   State.karma++;
   updateComponents();
 };
 
-export function decrementKarma() {
-  State.karma--;
+export function clearKarma() {
+  State.karma= 0;
   updateComponents();
 };
 

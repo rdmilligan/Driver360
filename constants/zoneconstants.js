@@ -1,6 +1,7 @@
 const Zone = {
     Stata: 'Stata',
-    Ryzon: 'Ryzon'
+    Ryzon: 'Ryzon',
+    Traja: 'Traja'
 };
 
 export default Zone;
