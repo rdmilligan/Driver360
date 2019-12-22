@@ -99,6 +99,20 @@ class Ryzon extends React.Component {
                         }}
                     />
                 </VrButton>
+                <AnimatedEntity
+                    source={{
+                        obj: asset('Road.obj'),
+                        mtl: asset('Road.mtl')
+                    }}
+                    lit={true}
+                    style={{
+                        transform: [
+                            {translateX: 0}, 
+                            {translateY: -1},
+                            {translateZ: this.animationPosZ}
+                        ]
+                    }}
+                />
             </View>
         );
     };
