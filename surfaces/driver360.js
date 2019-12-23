@@ -32,6 +32,7 @@ class Driver360 extends React.Component {
         <View style={styles.panel}>
           <Text style={styles.panelText}>
           {
+            isAction(this.props.action, Action.SignGivingOrderGiveWay) ? 'Explanation: give way to traffic on major road.' :
             isAction(this.props.action, Action.SignGivingOrderNationalSpeedLimit) ? 'Explanation: national speed limit applies.' :
             isAction(this.props.action, Action.SignGivingOrderMaximumSpeed) ? 'Explanation: maximum speed.' :
             'Click on a traffic sign to learn about it. Once done, look around for other traffic signs.'

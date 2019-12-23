@@ -99,12 +99,31 @@ class Ryzon extends React.Component {
                         }}
                     />
                 </VrButton>
+                <VrButton
+                    onClick={() => this.handleTrafficSign(Action.SignGivingOrderGiveWay)}
+                    onEnter={this.animationOff}
+                    onExit={this.animationOn}>
+
+                    <AnimatedEntity
+                        source={{
+                            obj: asset('SignGivingOrderGiveWay.obj'),
+                            mtl: asset('SignGivingOrderGiveWay.mtl')
+                        }}
+                        lit={true}
+                        style={{
+                            transform: [
+                                {translateX: -3}, 
+                                {translateY: -1},
+                                {translateZ: this.animationPosZ}
+                            ]
+                        }}
+                    />
+                </VrButton>
                 <AnimatedEntity
                     source={{
                         obj: asset('Road.obj'),
                         mtl: asset('Road.mtl')
                     }}
-                    lit={true}
                     style={{
                         transform: [
                             {translateX: 0}, 
