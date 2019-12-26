@@ -2,7 +2,11 @@
 
 [Try Driver 360 online](https://rdmilligan.github.io/driver-360/)
 
+[Read the post](https://rdmilligan.wordpress.com/2019/12/26/the-highway-code-in-virtual-reality/)
+
 Driver 360 is a virtual driving experience on a web page, built with React 360. It will help you learn The Highway Code.
+
+![Driver360](https://rdmilligan.files.wordpress.com/2019/01/React360_Room.png "Driver 360")
 
 ## How to get started
 
