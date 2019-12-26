@@ -2,8 +2,7 @@ import React from 'react';
 import Zone from '../constants/zoneconstants';
 import Action from '../constants/actionconstants';
 import {isZone} from '../helpers/zonehelpers';
-import {isAction} from '../helpers/actionhelpers';
-import {connect, setZone, setAction, clearAction, incrementKarma, clearKarma} from '../store/store';
+import {connect, setZone, setAction, clearAction} from '../store/store';
 import {View, VrButton, AmbientLight, PointLight, Animated, asset} from 'react-360';
 import Entity from 'Entity';
 const AnimatedEntity = Animated.createAnimatedComponent(Entity);
@@ -11,19 +10,10 @@ const AnimatedEntity = Animated.createAnimatedComponent(Entity);
 class Ryzon extends React.Component {
     animationPosZ = new Animated.Value(0);
 
-    handleTrafficSign = (action) => {
-        if (isAction(this.props.action, action)) 
-            return;
-
-        incrementKarma();
-        setAction(action);
-    };
-
     animationOn = () => {
         Animated.timing(this.animationPosZ, {toValue: 10, duration: 10000}).start((animation) => {
             if (animation.finished){
                 this.animationPosZ = new Animated.Value(0);
-                clearKarma();
                 clearAction();
                 setZone(Zone.Traja);
             }
@@ -60,7 +50,7 @@ class Ryzon extends React.Component {
                     }}
                 />
                 <VrButton
-                    onClick={() => this.handleTrafficSign(Action.SignGivingOrderMaximumSpeed)}
+                    onClick={() => setAction(Action.SignGivingOrderMaximumSpeed)}
                     onEnter={this.animationOff}
                     onExit={this.animationOn}>
 
@@ -80,7 +70,7 @@ class Ryzon extends React.Component {
                     />
                 </VrButton>
                 <VrButton
-                    onClick={() => this.handleTrafficSign(Action.SignGivingOrderNationalSpeedLimit)}
+                    onClick={() => setAction(Action.SignGivingOrderNationalSpeedLimit)}
                     onEnter={this.animationOff}
                     onExit={this.animationOn}>
 
@@ -100,7 +90,7 @@ class Ryzon extends React.Component {
                     />
                 </VrButton>
                 <VrButton
-                    onClick={() => this.handleTrafficSign(Action.SignGivingOrderGiveWay)}
+                    onClick={() => setAction(Action.SignGivingOrderGiveWay)}
                     onEnter={this.animationOff}
                     onExit={this.animationOn}>
 
@@ -120,7 +110,7 @@ class Ryzon extends React.Component {
                     />
                 </VrButton>
                 <VrButton
-                    onClick={() => this.handleTrafficSign(Action.SignGivingOrderSegregatedCyclePedestrianRoute)}
+                    onClick={() => setAction(Action.SignGivingOrderSegregatedCyclePedestrianRoute)}
                     onEnter={this.animationOff}
                     onExit={this.animationOn}>
 
