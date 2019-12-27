@@ -11,7 +11,7 @@ class Ryzon extends React.Component {
     animationPosZ = new Animated.Value(0);
 
     animationOn = () => {
-        Animated.timing(this.animationPosZ, {toValue: 10, duration: 10000}).start((animation) => {
+        Animated.timing(this.animationPosZ, {toValue: 15, duration: 15000}).start((animation) => {
             if (animation.finished){
                 this.animationPosZ = new Animated.Value(0);
                 clearAction();
@@ -118,6 +118,26 @@ class Ryzon extends React.Component {
                         source={{
                             obj: asset('SignGivingOrderSegregatedCyclePedestrianRoute.obj'),
                             mtl: asset('SignGivingOrderSegregatedCyclePedestrianRoute.mtl')
+                        }}
+                        lit={true}
+                        style={{
+                            transform: [
+                                {translateX: 3}, 
+                                {translateY: -1},
+                                {translateZ: this.animationPosZ}
+                            ]
+                        }}
+                    />
+                </VrButton>
+                <VrButton
+                    onClick={() => setAction(Action.SignGivingOrderVehiclePassEitherSide)}
+                    onEnter={this.animationOff}
+                    onExit={this.animationOn}>
+
+                    <AnimatedEntity
+                        source={{
+                            obj: asset('SignGivingOrderVehiclePassEitherSide.obj'),
+                            mtl: asset('SignGivingOrderVehiclePassEitherSide.mtl')
                         }}
                         lit={true}
                         style={{
