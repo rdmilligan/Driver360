@@ -32,6 +32,8 @@ class Driver360 extends React.Component {
         <View style={styles.panel}>
           <Text style={styles.panelText}>
           {
+            isAction(this.props.action, Action.SignGivingOrderSchoolCrossingPatrol) ? 'Explanation: school crossing patrol.' :
+            isAction(this.props.action, Action.SignGivingOrderContraFlowBusLane) ? 'Explanation: contra-flow bus lane.' :
             isAction(this.props.action, Action.SignGivingOrderVehiclePassEitherSide) ? 'Explanation: vehicles may pass either side to reach same destination.' :
             isAction(this.props.action, Action.SignGivingOrderSegregatedCyclePedestrianRoute) ? 'Explanation: segregated pedal cycle and pedestrian route.' :
             isAction(this.props.action, Action.SignGivingOrderGiveWay) ? 'Explanation: give way to traffic on major road.' :

@@ -3,7 +3,9 @@ const Action = {
     SignGivingOrderNationalSpeedLimit: 'SignGivingOrderNationalSpeedLimit',
     SignGivingOrderGiveWay: 'SignGivingOrderGiveWay',
     SignGivingOrderSegregatedCyclePedestrianRoute: 'SignGivingOrderSegregatedCyclePedestrianRoute',
-    SignGivingOrderVehiclePassEitherSide: 'SignGivingOrderVehiclePassEitherSide'
+    SignGivingOrderVehiclePassEitherSide: 'SignGivingOrderVehiclePassEitherSide',
+    SignGivingOrderContraFlowBusLane: 'SignGivingOrderContraFlowBusLane',
+    SignGivingOrderSchoolCrossingPatrol: 'SignGivingOrderSchoolCrossingPatrol'
 };
 
 export default Action;
