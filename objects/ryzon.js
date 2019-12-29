@@ -4,6 +4,7 @@ import Action from '../constants/actionconstants';
 import {isZone} from '../helpers/zonehelpers';
 import {connect, setZone, setAction, clearAction} from '../store/store';
 import {View, VrButton, AmbientLight, PointLight, Animated, asset} from 'react-360';
+import {Easing} from 'react-native'
 import Entity from 'Entity';
 const AnimatedEntity = Animated.createAnimatedComponent(Entity);
 
@@ -11,7 +12,10 @@ class Ryzon extends React.Component {
     animationPosZ = new Animated.Value(0);
 
     animationOn = () => {
-        Animated.timing(this.animationPosZ, {toValue: 20, duration: 20000}).start((animation) => {
+        const toValue = 20;
+        const duration = (toValue - this.animationPosZ._value) * 1000;
+
+        Animated.timing(this.animationPosZ, {toValue: toValue, duration: duration, easing: Easing.linear}).start((animation) => {
             if (animation.finished){
                 this.animationPosZ = new Animated.Value(0);
                 clearAction();
